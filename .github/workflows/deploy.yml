@@ -14,7 +14,7 @@ jobs:
       - name: 获取版本
         run: |
           FILENAME=`date  +"%y%m%d%H%M%S"`
-          echo "::set-output VERSION=$FILENAME"
+          echo "::set-output name=VERSION::$FILENAME"
         id: get_version
       - name: 展示版本
         run: echo ${{ steps.get_version.outputs.VERSION }}
