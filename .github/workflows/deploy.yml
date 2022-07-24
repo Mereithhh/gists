@@ -14,10 +14,10 @@ jobs:
       - name: 获取版本
         run: |
           FILENAME=`date  +"%y%m%d%H%M%S"`
-          echo "::set-output version=$FILENAME"
+          echo "::set-output VERSION=$FILENAME"
         id: get_version
       - name: 展示版本
-        run: echo ${{ steps.get_version.outputs.version }}
+        run: echo ${{ steps.get_version.outputs.VERSION }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
