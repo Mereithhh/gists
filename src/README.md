@@ -1,10 +1,10 @@
 ---
-# home: true
 icon: home
-title: Mereith's Gists
-# heroImage: /logo.svg
-# heroText: 你博客的名称
-# heroFullScreen: false
+title: 简介
 ---
 
-主页
+这是我记笔记的地方。
+
+在平时的开发和折腾中，总会遇到各种各样的问题，踩各种各样的坑，原来是都记录在博客上的，但是发现有人搞这种专门的笔记站，感觉不错，所以我也搞了一个。
+
+参上

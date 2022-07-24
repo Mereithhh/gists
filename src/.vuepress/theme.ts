@@ -23,7 +23,7 @@ export default hopeTheme({
 
   // sidebar
   sidebar: sidebar,
-
+  darkmode: "auto",
   footer: "Life is Strange.",
 
   displayFooter: true,
