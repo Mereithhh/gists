@@ -1,20 +1,12 @@
 import { sidebar } from "vuepress-theme-hope";
 
 export default sidebar([
-  "/",
-  "/home",
-  "/slide",
+  { text: "博客站", icon: "creative", link: "/get-started" },
+  { text: "工具站", link: "/intro", icon: "advance" },
   {
-    text: "如何使用",
-    icon: "creative",
-    prefix: "/guide/",
-    link: "/guide/",
-    children: "structure",
-  },
-  {
-    text: "文章",
+    text: "分类",
     icon: "note",
-    prefix: "/posts/",
+    prefix: "/category/",
     children: [
       {
         text: "文章 1-4",

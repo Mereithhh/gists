@@ -3,18 +3,18 @@ import navbar from "./navbar";
 import sidebar from "./sidebar";
 
 export default hopeTheme({
-  hostname: "https://vuepress-theme-hope-v2-demo.mrhope.site",
+  hostname: "https://gists.mereith.com",
 
   author: {
-    name: "Mr.Hope",
-    url: "https://mrhope.site",
+    name: "Mereith",
+    url: "https://www.mereith.com",
   },
 
   iconAssets: "iconfont",
 
   logo: "/logo.svg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "mereithhh/gists",
 
   docsDir: "demo/src",
 
@@ -24,7 +24,7 @@ export default hopeTheme({
   // sidebar
   sidebar: sidebar,
 
-  footer: "默认页脚",
+  footer: "Life is Strange.",
 
   displayFooter: true,
 
@@ -76,7 +76,7 @@ export default hopeTheme({
     blog: {
       autoExcerpt: true,
     },
-
+    copyCode: {},
     // 如果你不需要评论，可以直接删除 comment 配置，
     // 以下配置仅供体验，如果你需要评论，请自行配置并使用自己的环境，详见文档。
     // 为了避免打扰主题开发者以及消耗他的资源，请不要在你的正式环境中直接使用下列配置!!!!!
@@ -85,10 +85,10 @@ export default hopeTheme({
        * Using Giscus
        */
       provider: "Giscus",
-      repo: "vuepress-theme-hope/giscus-discussions",
-      repoId: "R_kgDOG_Pt2A",
+      repo: "Mereithhh/gists-comment",
+      repoId: "R_kgDOHtWAMQ",
       category: "Announcements",
-      categoryId: "DIC_kwDOG_Pt2M4COD69",
+      categoryId: "DIC_kwDOHtWAMc4CQZvX",
 
       /**
        * Using Twikoo
