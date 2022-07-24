@@ -51,8 +51,8 @@ jobs:
       - name: 打包镜像并推送
         uses: docker/build-push-action@v2
         with:
-          context: ./docs
-          file: ./docs/Dockerfile
+          context: .
+          file: ./Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
