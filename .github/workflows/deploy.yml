@@ -1,0 +1,67 @@
+name: 部署文档
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  deploy-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: 获取版本
+        run: |
+          FILENAME=`date  +"%y%m%d%H%M%S"`
+          echo "::set-output version=$FILENAME"
+        id: get_version
+      - name: 展示版本
+        run: echo ${{ steps.get_version.outputs.version }}
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to AliyunCS
+        uses: docker/login-action@v1
+        with:
+          registry: registry.cn-beijing.aliyuncs.com
+          username: ${{ secrets.ALI_USER  }}
+          password: ${{ secrets.ALI_PASSWORD  }}
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+
+      - name: 安装依赖
+        run: yarn install --frozen-lockfile
+
+      - name: 构建文档
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+        run: |-
+          yarn run docs:build
+          > docs/.vuepress/dist/.nojekyll
+        id: image-name
+      - name: 打包镜像并推送
+        uses: docker/build-push-action@v2
+        with:
+          context: ./docs
+          file: ./docs/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: |
+            "registry.cn-beijing.aliyuncs.com/mereith/gists:${{ steps.get_version.outputs.VERSION }}"
+      - name: 部署到集群
+        uses: steebchen/kubectl@v2.0.0
+        with: # defaults to latest kubectl binary version
+          config: ${{ secrets.K8S_CONFIG_DATA }}
+          command: set image -n tools deployment/vanblog-doc vanblog-doc=registry.cn-beijing.aliyuncs.com/mereith/van-blog:${{ steps.get_version.outputs.VERSION }}
+      - name: send Message To me
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d '{"source":"github-ci:gists-doc","message":"流水线运行完毕，${{ steps.get_version.outputs.VERSION }} 已部署"}'  ${{ secrets.WEBHOOK_URL }}
