@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@vue/component-compiler-utils": "^3.3.0",
+    "@vuepress/plugin-google-analytics": "^1.9.7",
     "@vuepress/shared-utils": "^1.9.7",
     "lru-cache": "^7.13.1"
   }
