@@ -1,7 +1,7 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme";
 import { searchPlugin } from "@vuepress/plugin-search";
-const { googleAnalyticsPlugin } = require("@vuepress/plugin-google-analytics");
+import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 export default defineUserConfig({
   lang: "zh-CN",
   title: "Mereith's Gists",
